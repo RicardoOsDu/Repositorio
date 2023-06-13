@@ -1,0 +1,35 @@
+{% extends 'Prueba_documentos/base.html' %}
+
+{% block content %}
+<hr>
+<h1><strong>Candidato:</strong></h1><br>
+<h2 class="section-heading-lower"><strong>Nombre:</strong> {{candidato.nombre}}</h2>
+<h2 class="section-heading-upper"><strong>Rut:</strong> {{candidato.rut}}</h2>
+<h2 class="section-heading-upper"><strong>Correo:</strong> {{candidato.correo}}</h2>
+<hr>
+<script> 
+//Cuadro de diálogo de confirmación en JavaScript
+    function confirmarReset()
+    {
+    return confirm("¿Está seguro que desea eliminar todos los documentos adjuntos?");
+    }
+</script>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Guardar</button>
+    <button type="reset" onclick="return confirmarReset()">Reiniciar</button>
+
+    <div>
+        <div>{{form.certificado_antecedentes.label}}</div>
+        <div>{{form.certificado_antecedentes}}</div>
+    </div>
+    <div>
+        <div>{{form.hoja_de_vida_conductor.label}}</div>
+        <div>{{form.hoja_de_vida_conductor}}</div>
+    </div>
+</form>
+    
+{% endblock %}
+    
+

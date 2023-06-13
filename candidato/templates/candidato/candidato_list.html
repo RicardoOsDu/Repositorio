@@ -1,0 +1,41 @@
+
+{% extends "Prueba_documentos/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <title>Candidatos</title>
+</head>
+<body>
+    {% if object_list %}
+    {% for candidato in object_list %}
+
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{candidato.nombre}}</span>
+                <span class="section-heading-upper">{{candidato.rut}}</span>
+                
+              </h2>
+              
+             
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+
+    {% endfor %}
+    {% else %}
+		<h1>No hay registros de candidatos</h1>
+	{% endif %}
+</body>
+</html>
+
+{% endblock %}
